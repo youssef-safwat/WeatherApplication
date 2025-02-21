@@ -11,7 +11,7 @@
             <h1>Weather</h1>
             <div class="box">
                 <h1>@Model.CityName</h1>
-                <h6>@Model.DateAndTime</h6>
+                <h6>@Model.DateAndTime.ToString("t")</h6>
                 <div class="text-right">@Model.TemperatureFahrenheit<sup>°F</sup></div>
             </div>
             <a href="~/">Back to Weather Home Page</a>

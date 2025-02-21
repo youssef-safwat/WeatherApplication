@@ -5,7 +5,7 @@ namespace WeatherApplication.Controllers
 {
     public class HomeController : Controller
     {
-        List<CityWeather> cityWeathers =
+        private List<CityWeather> cityWeathers =
         [
             new CityWeather 
             {

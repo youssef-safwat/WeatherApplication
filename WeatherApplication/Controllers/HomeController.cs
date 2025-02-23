@@ -5,7 +5,7 @@ namespace WeatherApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private List<CityWeather> cityWeathers =
+        private readonly List<CityWeather> _cityWeathers =
         [
             new CityWeather 
             {
@@ -34,14 +34,14 @@ namespace WeatherApplication.Controllers
         [Route("home")]
         public IActionResult Index()
         {
-            return View(cityWeathers);
+            return View(_cityWeathers);
         }
 
         [HttpGet]
         [Route("/weather/{cityCode:length(3)}")]
         public IActionResult Details(string cityCode)
         {
-            CityWeather? foundedCity = cityWeathers.FirstOrDefault(x => x.CityUniqueCode == cityCode);
+            CityWeather? foundedCity = _cityWeathers.FirstOrDefault(x => x.CityUniqueCode == cityCode);
             if(foundedCity is null)
             {
                 return View("NotFounded");

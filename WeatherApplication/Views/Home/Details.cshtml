@@ -1,20 +1,20 @@
 ﻿@model CityWeather
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>@Model.CityUniqueCode City</Title>
-        <meta charset="utf-8" />
-        <link href="~/StyleSheet.css" rel="stylesheet"/>
-    </head>
-    <body>
-        <div class="container float-left">
-            <h1>Weather</h1>
-            <div class="box">
-                <h1>@Model.CityName</h1>
-                <h6>@Model.DateAndTime.ToString("t")</h6>
-                <div class="text-right">@Model.TemperatureFahrenheit<sup>°F</sup></div>
-            </div>
-            <a href="~/">Back to Weather Home Page</a>
-        </div>
-    </body>
-</html>
+@{
+    if (Model is null)
+    {
+        ViewData["title"] = "Not Found";
+    }
+    else
+    {
+        ViewData["title"] = $"{Model.CityUniqueCode}";
+    }
+}
+@if (Model is not null)
+{
+    <div class="box">
+        <h1>@Model.CityName</h1>
+        <h6>@Model.DateAndTime.ToString("t")</h6>
+        <div class="text-right">@Model.TemperatureFahrenheit<sup>°F</sup></div>
+    </div>
+    <a href="~/forecast">Back to Weather Forecast Page</a>
+}

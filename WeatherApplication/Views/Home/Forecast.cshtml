@@ -1,0 +1,29 @@
+﻿@model List<CityWeather>
+@{
+    ViewData["title"] = "Forecast";
+    string TemperatureColor(int temperature)
+    {
+        if (temperature < 44)
+        {
+            return "#AFEEEE";
+        }
+        if (temperature >= 44 && temperature <= 74)
+        {
+            return "#FAFAD2";
+        }
+        return "#FFDAB9";
+    }
+
+    <div class="container">
+        @foreach (var city in Model)
+        {
+            <div class="box" style="background:@TemperatureColor(city.TemperatureFahrenheit)">
+                <h1>@city.CityName</h1>
+                <h6>@city.DateAndTime.ToString("t")</h6>
+                <a href="~/forecast/@city.CityUniqueCode">Details</a>
+                <div class="text-right">@city.TemperatureFahrenheit<sup>°F</sup></div>
+            </div>
+        }
+    </div>
+}
+

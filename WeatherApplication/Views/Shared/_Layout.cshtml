@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["title"] - Weather App</title>
+    <link rel="stylesheet" type="text/css" href="~/StyleSheet.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Weather Application</h1>
+        </header>
+        <nav class="navbar">
+            <span class="navbar-brand">WeatherApp</span>
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")" >Home</a></li>
+                <li><a href="@Url.Action("Forecast", "Home")">Forecast</a></li>
+            </ul>
+        </nav>
+        <main class="page-content">
+            @RenderBody()
+        </main>
+        <footer class="footer-content">
+            <p>&copy; @DateTime.Now.Year - Weather Application</p>
+        </footer>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

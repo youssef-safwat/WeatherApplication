@@ -1,39 +1,22 @@
-﻿@model List<CityWeather>
-@{
-    string TemperatureColor(int temperature)
-    {
-        if(temperature < 44)
-        {
-            return "#AFEEEE";
-        }
-        if(temperature >= 44 && temperature <= 74)
-        {
-            return "#FAFAD2";
-        }
-        return "#FFDAB9";
-    }
+﻿@{
+    ViewData["title"] = "Home";
 }
-<!DOCTYPR html>
-<html>
-<head>
-    <title>City Weather</title>
-    <meta charset="utf-8" />
-    <link href="~/StyleSheet.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="page-content float-left">
-        <h1>Weather</h1>
-        @foreach (var city in Model)
-        {
-            <div class="container">
-                <div class="box" style="background:@TemperatureColor(city.TemperatureFahrenheit)">
-                    <h1>@city.CityName</h1>
-                    <h6>@city.DateAndTime.ToString("t")</h6>
-                    <a href="~/weather/@city.CityUniqueCode">Details</a>
-                    <div class="text-right">@city.TemperatureFahrenheit<sup>°F</sup></div>
-                </div>
-            </div>
-        }
+<div class="box text-center margin-bottom">
+    <h1>Weather Forecast</h1>
+    <p class="margin-top">Get instant weather updates for cities worldwide</p>
+</div>
+
+<div class="flex w-90 margin-auto margin-bottom">
+    <div class="w-30">
+        <h3>Real-Time Updates</h3>
+        <p class="text-dark-grey margin-top">Get the latest weather information updated in real-time for accurate forecasting.</p>
     </div>
-</body>
-</html>
+    <div class="w-30">
+        <h3>Multiple Cities</h3>
+        <p class="text-dark-grey margin-top">Access weather data for various cities using their unique three-letter codes.</p>
+    </div>
+    <div class="w-30">
+        <h3>Detailed Reports</h3>
+        <p class="text-dark-grey margin-top">View comprehensive weather reports including temperature, humidity, and wind conditions.</p>
+    </div>
+</div>
